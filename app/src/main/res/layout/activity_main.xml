@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sortalgorithm.MainActivity">
+
+    <Button
+        android:id="@+id/btn_bubbleSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="冒泡排序"
+        android:gravity="center_horizontal"
+        android:onClick="bubbleSort"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/btn_quickSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="quickSort"
+        android:text="快速排序"/>
+    <Button
+        android:id="@+id/btn_insertSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="insertSort"
+        android:text="插入排序"/>
+
+    <Button
+        android:id="@+id/btn_shellSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="shellSort"
+        android:text="希尔排序"/>
+    <Button
+        android:id="@+id/btn_selectSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="selectSort"
+        android:text="选择排序"/>
+
+    <Button
+        android:id="@+id/btn_heapSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="heapSort"
+        android:text="堆排序"/>
+    <Button
+        android:id="@+id/btn_mergeSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="mergeSort"
+        android:text="归并排序"/>
+
+    <Button
+        android:id="@+id/btn_radixSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="radixSort"
+        android:text="基数排序"/>
+
+</LinearLayout>
