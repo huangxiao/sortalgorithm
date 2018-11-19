@@ -60,12 +60,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * 快速排序 quick sort
-     */
-
+    //快速排序 quick sort
     private void quickSort(){
+//        int[] unsorted = {2,10,5,3,7};
+        int[] unsorted = {12,10,5,3,17, 6, 1};
+        printArray(unsorted);
+        quicksortImpl(unsorted, 0, unsorted.length-1);
+        for (int i: unsorted ) {
+            Log.d(LOG_INFO, "排序后："+i);
+        }
     }
+
+    /**
+     * 快速排序具体实现方法
+     */
+    private void quicksortImpl(int[] unsorted, int left, int right){
+        int partition = 0;
+        if(left<right){
+            partition = partition(unsorted, left, right);
+            quicksortImpl(unsorted, left, partition-1);
+            quicksortImpl(unsorted, partition+1, right);
+        }
+    }
+
+    //找到分区点
+    private int partition(int[] unsorted, int low, int high){
+
+        int pivot = unsorted[low];
+
+        while (low < high){
+            while (low<high && unsorted[high]>pivot)
+                high--;
+            unsorted[low] = unsorted[high];
+            while(low<high && unsorted[low]<=pivot)
+                low++;
+            unsorted[high] = unsorted[low];
+        }
+        unsorted[low] = pivot;
+        return low;
+    }
+
 
 
     /**
