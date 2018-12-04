@@ -60,9 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //快速排序 quick sort
+    /**
+     * 快速排序 quick sort
+     */
     private void quickSort(){
-//        int[] unsorted = {2,10,5,3,7};
         int[] unsorted = {12,10,5,3,17, 6, 1};
         printArray(unsorted);
         quicksortImpl(unsorted, 0, unsorted.length-1);
@@ -83,7 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //找到分区点
+    /**
+     * 快速排序
+     * 找到分区点
+     */
     private int partition(int[] unsorted, int low, int high){
 
         int pivot = unsorted[low];
@@ -104,9 +108,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 插入排序 insert sort
+     * 将[1, n)的序列数依次插入到已排序的序列中
      */
     private void insertSort(){
+        int[] unsorted = {12,10,5,3,17, 6, 1};
+        printArray(unsorted);
+        insertSortImpl(unsorted);
+        for(int i = 0; i <= unsorted.length - 1; i++){
+            Log.d( LOG_INFO, "插入排序后:"+unsorted[i]);
+        }
 
+
+    }
+
+    /**
+     * direct insert sort
+     * @param unsorted
+     */
+    private void insertSortImpl(int[] unsorted){
+        for (int i = 1; i< unsorted.length; i++){
+            //put current data into sorted array
+            int data = unsorted[i];
+
+            int j = i-1;
+            while (j>=0 && data<unsorted[j]){
+                unsorted[j+1]=unsorted[j];
+                j--;
+            }
+            unsorted[j+1]=data;
+        }
     }
 
     /**
@@ -120,6 +150,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 选择排序
      */
     private void selectSort(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).start();
 
     }
 
@@ -165,7 +201,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
             case R.id.btn_insertSort:{
                 Toast.makeText(MainActivity.this, "insert sort", Toast.LENGTH_SHORT).show();
-                insertSort();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        insertSort();
+                    }
+                }).start();
+
             }
             break;
             case R.id.btn_shellSort:{
@@ -195,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
         }
     }
+
 
 
 }
