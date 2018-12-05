@@ -148,16 +148,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 选择排序
+     * 算法思想：将待排序序列分为两部分，一部分为有序序列，一部分为无序序列。
+     * 第一趟：从a[0]到a[n-1]中找到最小的数a[i]，然后将a[i]与a[0]交换
+     * 第二趟：从a[1]到a[n-1]中找到最小的数a[j]，然后将a[j]与a[1]交换
+     * 第三趟：从a[2]到a[n-1]中找到最小的数a[k],然后将a[k]与a[2]交换 ……
      */
     private void selectSort(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }).start();
+        int[] unsorted = {12,10,5,3,17, 6, 1};
+        printArray(unsorted);
+        selectSortImpl(unsorted);
 
     }
+
+    /**
+     * 选择排序具体实现类
+     * @param unsorted 未排序前序列
+     */
+    private void selectSortImpl(int[] unsorted){
+        int length = unsorted.length;
+        for (int i = 0; i < length; i++){
+            //找到最小的书与unsorted[i]交换
+            // TODO: 2018/12/5 how to find the smallest number
+            int min = unsorted[i];
+            int j = i+1;
+            while (j < length){
+                if(unsorted[j]<min){
+                    //交换min和当前值
+                    int temp = min;
+                    min = unsorted[j];
+                    unsorted[j] = temp;
+                }
+                j++;
+            }
+            unsorted[i] = min;
+        }
+        for(int i = 0; i <= unsorted.length - 1; i++){
+            Log.d( LOG_INFO, "选择排序后:"+unsorted[i]);
+        }
+    }
+
 
     /**
      * 堆排序 heap sort
@@ -217,7 +246,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
             case R.id.btn_selectSort:{
                 Toast.makeText(MainActivity.this, "select sort", Toast.LENGTH_SHORT).show();
-                selectSort();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        selectSort();
+                    }
+                }).start();
             }
             break;
             case R.id.btn_heapSort:{
